@@ -3,7 +3,7 @@ import Form from "../Modules/Form";
 import { useRouter } from "next/router";
 
 function Addcustomerpage() {
-  const router = useRouter()
+  const router = useRouter();
   const [form, setForm] = useState({
     name: "",
     lastName: "",
@@ -16,10 +16,27 @@ function Addcustomerpage() {
   });
 
   const cancelHandler = () => {
+    setForm({
+      name: "",
+      lastName: "",
+      email: "",
+      products: [],
+      date: "",
+      phone: "",
+      address: "",
+      postalCode: "",
+    });
     router.push("/");
   };
-  const saveHandler = () => {
-    console.log("log");
+  const saveHandler = async () => {
+    const res = await fetch("api/customer", {
+      method: "POST",
+      body: JSON.stringify({ data: form }),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status === "success") router.push("/");
   };
   return (
     <div className="customer-page">

@@ -1,5 +1,5 @@
-import Customer from "../../Models/customer";
-import connectDB from "../../Utils/Connetctdb";
+import Customer from "../../../Models/customer";
+import connectDB from "../../../Utils/Connetctdb";
 
 export default async function handler(req, res) {
   try {
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         .json({ status: "failed", message: "Invalid data" });
 
     try {
-      const customer = await Customer.create({ data });
+      const customer = await Customer.create(data);
       res.status(201).json({
         status: "success",
         message: " customer created",

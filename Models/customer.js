@@ -7,6 +7,12 @@ const CustomerSchema = new mongoose.Schema({
     trim: true,
     minLength: 2,
   },
+  lastName: {
+    type: String,
+    required: true,
+    trim: true,
+    minLength: 2,
+  },
   email: {
     type: String,
     required: true,
@@ -24,7 +30,7 @@ const CustomerSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  postalCde: Number,
+  postalCode: Number,
   date: Date,
   products: {
     type: Array,
