@@ -16,19 +16,19 @@ export default async function handler(req, res) {
       return res
         .status(400)
         .json({ status: "failed", message: "Invalid data" });
-  }
 
-  try {
-    const customer = await Customer.create({ data });
-    res.status(201).json({
-      status: "success",
-      message: " customer created",
-      data: customer,
-    });
-  } catch (err) {
-    console.log(err);
-    res
-      .status(500)
-      .json({ status: "failed", message: "failed to create customer" });
+    try {
+      const customer = await Customer.create({ data });
+      res.status(201).json({
+        status: "success",
+        message: " customer created",
+        data: customer,
+      });
+    } catch (err) {
+      console.log(err);
+      res
+        .status(500)
+        .json({ status: "failed", message: "failed to create customer" });
+    }
   }
 }
