@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
     if (!data.name || !data.lastName || !data.email)
       return res
-        .status(400)
+        .status(401)
         .json({ status: "failed", message: "Invalid data" });
 
     try {
