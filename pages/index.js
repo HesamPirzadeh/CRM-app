@@ -2,11 +2,11 @@ import Home from "../components/Templates/Home";
 import Customer from "../Models/customer";
 import connectDB from "../Utils/connectDB";
 
-function index({ customer }) {
-  console.log(customer);
+function index({ customers }) {
+  console.log(customers);
   return (
     <div>
-      <Home />
+      <Home customers={customers} />
     </div>
   );
 }
@@ -19,7 +19,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      customer: JSON.parse(JSON.stringify(customer)),
+      customers: JSON.parse(JSON.stringify(customer)),
     },
   };
 }
